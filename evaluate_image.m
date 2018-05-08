@@ -1,7 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 2018 4/18  Yoshi R @ Univ. Tokyo
 % Free LICENSE
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 classdef evaluate_image
     % Functions to evaluate images
@@ -41,7 +41,7 @@ classdef evaluate_image
         end
         
         
-        %% SAD %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %% SAD %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         function e = SAD(img1,img2)
             % Input: image1,image2
             if(~(size(img1)==size(img2)))
@@ -58,7 +58,7 @@ classdef evaluate_image
         end
         
         % Normalized correlation
-        %% NCC %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %% NCC %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         function e = NCC(img1,img2)
             % Input: image1,image2
             img1 = double(img1);
@@ -73,7 +73,7 @@ classdef evaluate_image
             V2 = reshape(img2,[1 numel(img2)])  ;
             
             % Normalization
-            Nolm =sqrt(  V1* V1.' + V2 * V2.' );
+            Nolm =sqrt(  V1* V1.' * V2 * V2.' );
             e = (V1 * V2.') / Nolm;
         end
         
@@ -96,7 +96,7 @@ classdef evaluate_image
             V1 = reshape(img1,[1 numel(img1)])  - avg1;
             V2 = reshape(img2,[1 numel(img2)])  - avg2;
             
-            Nolm =sqrt(  V1* V1.' + V2 * V2.' );
+            Nolm =sqrt(  V1* V1.' * V2 * V2.' );
             e = (V1 * V2.') / Nolm;
         end
         
